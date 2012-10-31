@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: sardbaba
+Contributors: baba_mmx
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQA7VVGLLW6UN
 Tags: video, playlists, youyube, coverflow, contentflow, html5lightbox, lightbox
 Requires at least: 3.0.1
