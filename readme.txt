@@ -61,4 +61,3 @@ Send me an email at **info@mauromascia.com** and we'll talk about it.
 
 Sebs Studio [Sebastien](http://www.sebs-studio.com/ "Sebs Studio") for the "My YouTube Videos" plugin used as initial code for this project.
 
-`<?php code(); // goes in backticks ?>`
