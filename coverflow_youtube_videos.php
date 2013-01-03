@@ -5,7 +5,7 @@
   Description: Displays a user's Youtube videos in a simil-Coverflow way.
   Author: Mauro Mascia
   Author URI: http://www.mauromascia.com
-  Version: 1.0
+  Version: 1.0.1
   Tags: Videos, Thumbnails, Playlists, YouTube, HD, Coverflow, HTML5 Lightbox
   License: GPLv3
 
@@ -45,27 +45,26 @@ function fetch_coverflow_youtube_vids($args) {
     $coverflow_youtube_reflection = get_option('coverflow_youtube_reflection');
     $coverflow_youtube_circular = get_option('coverflow_youtube_circular');
     $coverflow_youtube_scale = get_option('coverflow_youtube_scale');
-    
+
     if ($plist = $shortcode_args["list"]) {
         if (strlen($plist) != 18 && strlen($plist) != 16 || (strlen($plist) == 18 && !preg_match("/^(PL|UU|FL)/i", $plist))) {
             return "Playlist ID must be 16 character long or 18 if starting with 'PL' (Play List) or 'UU' (User Uploads) or 'FL' (Favourite List).";
         }
-        
+
         if (strlen($plist) == 18) {
             $plist = substr($plist, 2); //remove PL|FL|UU
         }
-        
+
         $url = 'http://gdata.youtube.com/feeds/api/playlists/' . $plist . '?v=2';
         $type = "user-playlist";
-    }
-    else {
+    } else {
         $url = 'http://gdata.youtube.com/feeds/api/users/' . $username . '/uploads';
         $type = "user-uploads";
     }
-    
+
     $sxml = simplexml_load_file($url);
     //echo "<pre>";print_r($sxml);echo "</pre>"; //debug
-    
+
     if ($sxml->entry):
         $content = <<<HTML
         
@@ -82,9 +81,9 @@ HTML;
 
 					$media = $entry->children('http://search.yahoo.com/mrss/');
 
-					// get video player URL
-					$attrs = $media->group->player->attributes();
-					$watch = $attrs['url'];
+                    // get video player URL
+                    //$attrs = $media->group->player->attributes();
+                    //$watch = $attrs['url'];
 
 					// get video thumbnail
 					$attrs = $media->group->thumbnail[0]->attributes();
@@ -100,7 +99,7 @@ HTML;
 				    $alt = $entry->title;
 
                     // get video thumbnail
-                    $thumbnail = "http://img.youtube.com/vi/$video_id/0.jpg";
+                    $thumbnail = "http://img.youtube.com/vi/$id/0.jpg";
                     break;
 			}
 
@@ -194,7 +193,7 @@ function coverflow_youtube_vids_settings() {
         <div id="icon-options-general" class="icon32"><br></div>
         <h2>Coverflow YouTube Videos</h2>
         <form method="post" action="options.php">
-    <?php wp_nonce_field('update-options'); ?>
+            <?php wp_nonce_field('update-options'); ?>
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Username (Global):</th>
