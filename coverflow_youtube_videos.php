@@ -5,7 +5,7 @@
   Description: Displays a user's Youtube videos in a simil-Coverflow way.
   Author: Mauro Mascia
   Author URI: http://www.mauromascia.com
-  Version: 1.0.1
+  Version: 1.0.2
   Tags: Videos, Thumbnails, Playlists, YouTube, HD, Coverflow, HTML5 Lightbox
   License: GPLv3
 
@@ -45,6 +45,7 @@ function fetch_coverflow_youtube_vids($args) {
     $coverflow_youtube_reflection = get_option('coverflow_youtube_reflection');
     $coverflow_youtube_circular = get_option('coverflow_youtube_circular');
     $coverflow_youtube_scale = get_option('coverflow_youtube_scale');
+    $coverflow_youtube_position = get_option('coverflow_youtube_position');
 
     if ($plist = $shortcode_args["list"]) {
         if (strlen($plist) != 18 && strlen($plist) != 16 || (strlen($plist) == 18 && !preg_match("/^(PL|UU|FL)/i", $plist))) {
@@ -136,6 +137,7 @@ HTML;
 			reflectionHeight: $coverflow_youtube_reflection,
 			scaleFactor: $coverflow_youtube_scale,
 			circularFlow: '$coverflow_youtube_circular',
+                        startItem: '$coverflow_youtube_position',
 			onclickActiveItem: false, //default behaviour open a new window; we'll use html5lightbox instead!
 		} ) ;
 		
@@ -160,6 +162,7 @@ function coverflow_youtube_vids_install() {
     add_option("coverflow_youtube_reflection", '0.5', '', 'yes');
     add_option("coverflow_youtube_circular", 'yes', '', 'yes');
     add_option("coverflow_youtube_scale", '1', '', 'yes');
+    add_option("coverflow_youtube_position", 'center', '', 'yes');
 }
 
 /* Runs on plugin deactivation */
@@ -171,6 +174,7 @@ function coverflow_youtube_vids_remove() {
     delete_option('coverflow_youtube_reflection');
     delete_option('coverflow_youtube_circular');
     delete_option('coverflow_youtube_scale');
+    delete_option('coverflow_youtube_position');
 }
 
 if (is_admin()) {
@@ -187,6 +191,7 @@ function coverflow_youtube_vids_settings() {
     $coverflow_youtube_reflection = get_option('coverflow_youtube_reflection');
     $coverflow_youtube_circular = get_option('coverflow_youtube_circular');
     $coverflow_youtube_scale = get_option('coverflow_youtube_scale');
+    $coverflow_youtube_position = get_option('coverflow_youtube_position');
     ?>
 
     <div class="wrap">
@@ -233,6 +238,17 @@ function coverflow_youtube_vids_settings() {
                     </td>
                 </tr>
                 <tr valign="top">
+                    <th scope="row">Position</th>
+                    <td>
+                        <select name="coverflow_youtube_position" size="1">
+                            <option value="center" <?php echo $coverflow_youtube_position != 'center' ? "" : ' selected="selected"'; ?>>Center</option>
+                            <option value="first" <?php echo $coverflow_youtube_position != 'first' ? "" : ' selected="selected"'; ?>>First</option>
+                            <option value="last" <?php echo $coverflow_youtube_position != 'last' ? "" : ' selected="selected"'; ?>>Last</option>
+                        </select>
+                        <span><i>Videos are order by date: set it to "first" or "last" to move the videos. Default is "center"</i></span>
+                    </td>
+                </tr>
+                <tr valign="top">
                     <th scope="row">Image scale factor:</th>
                     <td>
                         <select name="coverflow_youtube_scale" size="1">
@@ -252,7 +268,7 @@ function coverflow_youtube_vids_settings() {
                 </tr>
             </table>
             <input type="hidden" name="action" value="update" />
-            <input type="hidden" name="page_options" value="coverflow_youtube_username, coverflow_youtube_reflection, coverflow_youtube_circular, coverflow_youtube_scale" />
+            <input type="hidden" name="page_options" value="coverflow_youtube_username, coverflow_youtube_reflection, coverflow_youtube_circular, coverflow_youtube_scale, coverflow_youtube_position" />
             <p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" /></p>
         </form>
 

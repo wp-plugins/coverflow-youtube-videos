@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: video, playlists, youyube, coverflow, contentflow, html5lightbox, lightbox
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ Send me an email at **info@mauromascia.com** and we'll talk about it.
 3. Configuration panel
 
 == Changelog ==
+
+= 1.0.2 =
+* NEW: added startItem option
 
 = 1.0.1 =
 * Fixed: issue with thumbnails on playlists
