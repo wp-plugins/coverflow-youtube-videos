@@ -5,7 +5,7 @@
   Description: Displays a user's Youtube videos in a simil-Coverflow way.
   Author: Mauro Mascia
   Author URI: http://www.mauromascia.com
-  Version: 1.0.2
+  Version: 1.0.3
   Tags: Videos, Thumbnails, Playlists, YouTube, HD, Coverflow, HTML5 Lightbox
   License: GPLv3
 
@@ -48,6 +48,8 @@ function fetch_coverflow_youtube_vids($args) {
     $coverflow_youtube_position = get_option('coverflow_youtube_position');
 
     if ($plist = $shortcode_args["list"]) {
+        /*
+         * FIX 1.0.3 - This seems not to be useful anymore
         if (strlen($plist) != 18 && strlen($plist) != 16 || (strlen($plist) == 18 && !preg_match("/^(PL|UU|FL)/i", $plist))) {
             return "Playlist ID must be 16 character long or 18 if starting with 'PL' (Play List) or 'UU' (User Uploads) or 'FL' (Favourite List).";
         }
@@ -55,6 +57,8 @@ function fetch_coverflow_youtube_vids($args) {
         if (strlen($plist) == 18) {
             $plist = substr($plist, 2); //remove PL|FL|UU
         }
+         * 
+         */
 
         $url = 'http://gdata.youtube.com/feeds/api/playlists/' . $plist . '?v=2';
         $type = "user-playlist";

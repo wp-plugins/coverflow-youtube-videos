@@ -3,8 +3,8 @@ Contributors: baba_mmx
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQA7VVGLLW6UN
 Tags: video, playlists, youyube, coverflow, contentflow, html5lightbox, lightbox
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.0.2
+Tested up to: 3.5
+Stable tag: 1.0.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,30 @@ libraries to mimic the Coverflow's Apple visualization interface.
 
 * [ContentFlow](http://www.jacksasylum.eu/ContentFlow/license.php "ContentFlow") is licensed as MIT *GPL-compatible*
 * [HTML5Lightbox](http://html5box.com/html5lightbox/index.php "HTML5Lightbox") is licensed as GPLv2
+
+
+= Style =
+
+You can change the color of the text displayed underneath the video thumbnails adding some CSS to your theme stylesheet file:
+`
+.ContentFlow .globalCaption .caption {
+  color: black;
+}
+`
+
+If you need to change also the slider color you have to overwrite the default values with something like that:
+`
+.ContentFlow .scrollbar {
+  background: url(img/my_scrollbar.png) left center repeat-x !important;
+}
+.ContentFlow .scrollbar .slider {
+  background: url(img/my_slider.png) center center no-repeat !important;
+}
+`
+
+Where my_scrollbar.png and my_slider.png are your custom images (under the img folder of your theme).
+These images needs to be like scrollbar_white.png and slider_white.png under wp-content/plugins/coverflow-youtube-videos/ContentFlow/img
+
 
 == Installation ==
 
@@ -51,6 +75,9 @@ Send me an email at **info@mauromascia.com** and we'll talk about it.
 3. Configuration panel
 
 == Changelog ==
+
+= 1.0.3 =
+* Fixed: Video playlist id can be longer than 16 characters.
 
 = 1.0.2 =
 * NEW: added startItem option
