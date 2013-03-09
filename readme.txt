@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: video, playlists, youyube, coverflow, contentflow, html5lightbox, lightbox
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.0.3
+Stable tag: 1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Displays a user's Youtube videos in a simil-Coverflow way.
 
 Displays a user's Youtube videos in a simil-Coverflow way.
 
-This plugin uses ContentFlow v1.0.2 and HTML5Lightbox Javascript 
+This plugin uses ContentFlow v1.0.2 and HTML5Lightbox Javascript
 libraries to mimic the Coverflow's Apple visualization interface.
 
 * [ContentFlow](http://www.jacksasylum.eu/ContentFlow/license.php "ContentFlow") is licensed as MIT *GPL-compatible*
@@ -75,6 +75,9 @@ Send me an email at **info@mauromascia.com** and we'll talk about it.
 3. Configuration panel
 
 == Changelog ==
+
+= 1.0.4 =
+* Fixed Coverflow Android support.
 
 = 1.0.3 =
 * Fixed: Video playlist id can be longer than 16 characters.

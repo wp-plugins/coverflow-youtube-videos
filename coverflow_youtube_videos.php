@@ -5,7 +5,7 @@
   Description: Displays a user's Youtube videos in a simil-Coverflow way.
   Author: Mauro Mascia
   Author URI: http://www.mauromascia.com
-  Version: 1.0.3
+  Version: 1.0.4
   Tags: Videos, Thumbnails, Playlists, YouTube, HD, Coverflow, HTML5 Lightbox
   License: GPLv3
 
@@ -57,7 +57,7 @@ function fetch_coverflow_youtube_vids($args) {
         if (strlen($plist) == 18) {
             $plist = substr($plist, 2); //remove PL|FL|UU
         }
-         * 
+         *
          */
 
         $url = 'http://gdata.youtube.com/feeds/api/playlists/' . $plist . '?v=2';
@@ -72,11 +72,11 @@ function fetch_coverflow_youtube_vids($args) {
 
     if ($sxml->entry):
         $content = <<<HTML
-        
+
 	<div class="ContentFlow" id="Coverflow-Youtube-Videos">
 		<div class="loadIndicator"><div class="indicator"></div></div>
         <div class="flow">
-        
+
 HTML;
 
 		foreach ($sxml->entry as $entry):
@@ -93,14 +93,14 @@ HTML;
 					// get video thumbnail
 					$attrs = $media->group->thumbnail[0]->attributes();
 					$thumbnail = $attrs['url'];
-					
+
 					$alt = $media->group->title;
-					
+
 					break;
-                
+
 				case "user-playlist":
 				    $id = _get_video_id_from_playlist_entry($entry);
-				    
+
 				    $alt = $entry->title;
 
                     // get video thumbnail
@@ -117,7 +117,7 @@ HTML;
 		endforeach;
 
 		$content.= <<<HTML
-		
+
 		</div>
 		<div class="globalCaption"></div>
 		<div class="scrollbar">
@@ -126,14 +126,14 @@ HTML;
 			<div class="slider"><div class="position"></div></div>
 		</div>
 	</div>
-		
+
 HTML;
 
         //add Highslide and Imageflow capabilities
         $content.= <<<JS
-    
+
     <script type="text/javascript" src="$CFYT_URLPATH/html5lightbox/html5lightbox.js"></script>
-    
+
     <link rel="stylesheet" href="$CFYT_URLPATH/ContentFlow/contentflow.css" type="text/css" media="all" />
     <script type="text/javascript" src="$CFYT_URLPATH/ContentFlow/contentflow.js"></script>
 	<script type="text/javascript">
@@ -144,7 +144,7 @@ HTML;
                         startItem: '$coverflow_youtube_position',
 			onclickActiveItem: false, //default behaviour open a new window; we'll use html5lightbox instead!
 		} ) ;
-		
+
 	</script>
 JS;
 
@@ -283,7 +283,7 @@ function coverflow_youtube_vids_settings() {
 /**
  * Retrieve the video ID
  * @param type $entry
- * @return type 
+ * @return type
  */
 function _get_video_id_from_playlist_entry($entry) {
     foreach ($entry->link as $value) {
@@ -294,14 +294,14 @@ function _get_video_id_from_playlist_entry($entry) {
                 return $matches["id"];
 
                 break;
-            
+
             //TODO: implement other cases
-            
+
             default:
                 break;
         }
     }
-    
+
     /** EXAMPLE
 [link] => Array
 (
@@ -373,6 +373,6 @@ function _get_video_id_from_playlist_entry($entry) {
 
 )
      */
-    
+
 }
 ?>
