@@ -5,6 +5,8 @@
  *  ContentFlow is distributed under the terms of the MIT license.
  *  (see http://www.jacksasylum.eu/ContentFlow/LICENSE)
  *
+ *  Modified by sardbaba
+ *
  *--------------------------------------------------------------------------*/
 /*
  * ============================================================
@@ -30,7 +32,6 @@ var ContentFlowGlobal = {
         this.Konqueror4 = this.Konqueror && /native code/.test(document.getElementsByClassName) ? true : false;
         this.Gecko = !this.WebKit && navigator.product == "Gecko" ? true : false;
         this.Gecko19 = this.Gecko && Array.reduce ? true : false;
-//alert(navigator.userAgent);
     })(),
 
     getAddOnConf: function(name) {
@@ -728,6 +729,12 @@ ContentFlow.prototype = {
         onclickInactiveItem: function (item) {},
 
         onclickActiveItem: function (item) {
+          /*
+           * [1.0.6]
+           * Using playlists the first video is opened into fullscreen mode
+           * and this behaviour is not the one we want.
+           * This seems to be the offending code.
+           *
             var url, target;
 
             if (url = item.content.getAttribute('href')) {
@@ -746,6 +753,7 @@ ContentFlow.prototype = {
                 else
                     window.location.href = url;
             }
+          */
         },
 
         onMakeInactive: function (item) {},
@@ -2581,4 +2589,3 @@ if (!window.removeEvent) {
 
 /* ==================== start it all up ==================== */
 ContentFlowGlobal.init();
-

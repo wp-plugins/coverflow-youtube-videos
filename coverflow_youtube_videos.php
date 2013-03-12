@@ -5,7 +5,7 @@
   Description: Displays a user's Youtube videos in a simil-Coverflow way.
   Author: Mauro Mascia
   Author URI: http://www.mauromascia.com
-  Version: 1.0.5
+  Version: 1.0.6
   Tags: Videos, Thumbnails, Playlists, YouTube, HD, Coverflow, HTML5 Lightbox
   License: GPLv3
 
@@ -113,6 +113,11 @@ HTML;
 HTML;
 
   //add Highslide and Imageflow capabilities
+  // [1.0.6] FIX
+  // Default ContentFlow behaviour is to open a new window
+  //we'll use html5lightbox instead. So setting onclickActiveItem: false
+  //should work but for some reasons it doesn't. The solution is to comment out
+  //the code of the onclickActiveItem method under contentflow.js
   $content.= <<<JS
   <script type="text/javascript" src="$CFYT_URLPATH/html5lightbox/html5lightbox.js"></script>
   <link rel="stylesheet" href="$CFYT_URLPATH/ContentFlow/contentflow.css" type="text/css" media="all" />
@@ -122,8 +127,7 @@ HTML;
       reflectionHeight: $coverflow_youtube_reflection,
       scaleFactor: $coverflow_youtube_scale,
       circularFlow: '$coverflow_youtube_circular',
-      startItem: '$coverflow_youtube_position',
-      onclickActiveItem: false, //default behaviour open a new window; we'll use html5lightbox instead!
+      startItem: '$coverflow_youtube_position'
     });
   </script>
 JS;
