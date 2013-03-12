@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: video, playlists, youyube, coverflow, contentflow, html5lightbox, lightbox
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.1
+Stable tag: 1.0.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,20 @@ libraries to mimic the Coverflow's Apple visualization interface.
 * [ContentFlow](http://www.jacksasylum.eu/ContentFlow/license.php "ContentFlow") is licensed as MIT *GPL-compatible*
 * [HTML5Lightbox](http://html5box.com/html5lightbox/index.php "HTML5Lightbox") is licensed as GPLv2
 
+= Usage =
+
+* Displays the videos of the user configured in the admin page:
+`[coverflow_youtube_videos]`
+
+* Displays the videos of the user specified in the shortcode:
+`[coverflow_youtube_videos user="USERNAME"]`
+
+* Displays the videos of the playlist specified in the shortcode:
+`[coverflow_youtube_videos list="PLAYLIST_ID"]`
+
+= Shortcode Options =
+
+* Hide the numbers underneath the slider: `numbers=no`
 
 = Style =
 
@@ -61,9 +75,7 @@ Add this shortcode to either a post or page: **[coverflow_youtube_videos]**.
 
 = How do I enable videos of a specific user? =
 Go to 'Settings -> Coverflow YouTube Videos' and change the username of the Youtube user.
-You can use the attribute "user" to change global username per page.
-You can also specify a user playlist per page by adding a "list" attribute in the shortcode,
-i.e. **[coverflow_youtube_videos list="PLAYLIST_ID"]**
+See *Usage* and *Shortcode Options* sections in the main plugin page for more info.
 
 = I need some plugin modifications. How can I tell you what I want? =
 Send me an email at **info@mauromascia.com** and we'll talk about it.
@@ -75,6 +87,11 @@ Send me an email at **info@mauromascia.com** and we'll talk about it.
 3. Configuration panel
 
 == Changelog ==
+
+= 1.0.5 =
+* NEW: added ability to hide numbers from shortcode.
+* Fixed code indentation
+* Removed debugging code
 
 = 1.0.4 =
 * Fixed Coverflow Android support.
